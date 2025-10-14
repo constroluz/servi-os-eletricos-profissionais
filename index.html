@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Constroluz | Elétrica & Construção em Guarulhos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              // Novas cores da marca Constroluz
+              "constroluz-primary": "#FF0000", // Vermelho Vibrante
+              "constroluz-dark": "#1a1a1a", // Preto/Cinza Escuro
+              "constroluz-light": "#FFFFFF", // Branco
+              "constroluz-secondary": "#F0F0F0", // Um cinza bem claro para fundos
+            },
+            fontFamily: {
+              // Montserrat é o padrão agora
+              sans: ["Montserrat", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Estilo da Seção Hero (Fundo e Overlay) */
+      #hero-section {
+        /* CAMINHO DA IMAGEM: assets/images/hero_background.png */
+        background-image: url("assets/images/hero_background.png");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      #hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(26, 26, 26, 0.8); /* 80% de opacidade do dark */
+      }
+
+      /* Estilo para o Header Fixo (Controlado por JS) */
+      .header-scrolled {
+        background-color: #1a1a1a;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Botão Flutuante WhatsApp */
+      .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #25d366;
+        color: #fff;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 100;
+        transition: transform 0.3s ease;
+      }
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+      }
+      .whatsapp-float img {
+        /* Caminho da Imagem: assets/images/whatsapp.png */
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-constroluz-secondary text-constroluz-dark font-sans font-light"
+  >
+    <a
+      href="https://wa.me/5511992560312"
+      class="whatsapp-float"
+      target="_blank"
+    >
+      <img src="assets/images/whatsapp.png" alt="Fale Conosco pelo WhatsApp" />
+    </a>
+
+    <header
+      id="main-header"
+      class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+    >
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
+      >
+        <a href="#hero-section">
+          <img
+            src="assets/images/logo.png"
+            alt="Logo Constroluz"
+            class="h-16 w-auto transition-opacity duration-300 hover:opacity-80"
+          />
+        </a>
+
+        <nav class="hidden lg:flex space-x-8 items-center">
+          <a
+            href="#quem-somos"
+            class="text-constroluz-light hover:text-constroluz-primary transition duration-200 font-medium"
+            >Quem Somos</a
+          >
+          <a
+            href="#servicos"
+            class="text-constroluz-light hover:text-constroluz-primary transition duration-200 font-medium"
+            >Serviços</a
+          >
+          <a
+            href="#diferenciais"
+            class="text-constroluz-light hover:text-constroluz-primary transition duration-200 font-medium"
+            >Diferenciais</a
+          >
+          <a
+            href="https://wa.me/5511992560312"
+            target="_blank"
+            class="py-2 px-6 bg-constroluz-primary text-constroluz-light font-bold rounded-lg shadow-lg hover:opacity-90 transition duration-300 transform hover:scale-105"
+          >
+            Solicite um Orçamento
+          </a>
+        </nav>
+
+        <button
+          id="mobile-menu-button"
+          class="lg:hidden text-constroluz-light p-2 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-constroluz-primary"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <nav
+        id="mobile-menu"
+        class="hidden lg:hidden bg-constroluz-dark transition-all duration-300"
+      >
+        <div class="flex flex-col space-y-2 p-4">
+          <a
+            href="#quem-somos"
+            class="text-constroluz-light hover:bg-white/10 p-2 rounded-md"
+            >Quem Somos</a
+          >
+          <a
+            href="#servicos"
+            class="text-constroluz-light hover:bg-white/10 p-2 rounded-md"
+            >Serviços</a
+          >
+          <a
+            href="#diferenciais"
+            class="text-constroluz-light hover:bg-white/10 p-2 rounded-md"
+            >Diferenciais</a
+          >
+          <a
+            href="https://wa.me/5511992560312"
+            target="_blank"
+            class="py-2 px-4 bg-constroluz-primary text-constroluz-light font-bold rounded-lg text-center mt-2"
+          >
+            Fale Conosco
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <section
+      id="hero-section"
+      class="h-screen flex items-center justify-center text-center relative"
+    >
+      <div id="hero-overlay"></div>
+      <div class="relative z-10 p-4 max-w-4xl mx-auto">
+        <h1
+          class="text-5xl sm:text-7xl font-black uppercase mb-6 leading-tight"
+        >
+          <span class="text-constroluz-light block">SERVIÇOS ELÉTRICOS</span>
+          <span class="text-constroluz-primary">PROFISSIONAIS</span>
+        </h1>
+        <h2 class="text-xl sm:text-2xl font-light text-constroluz-light mb-10">
+          Especialistas em instalações, reparos e manutenção para residências,
+          comércios e indústrias em Guarulhos e região.
+        </h2>
+        <a
+          href="https://wa.me/5511992560312"
+          target="_blank"
+          class="inline-block py-4 px-12 text-lg bg-constroluz-primary text-constroluz-light font-bold rounded-full shadow-2xl hover:opacity-90 transition duration-300 transform hover:scale-105"
+        >
+          Fale Conosco Agora
+        </a>
+      </div>
+    </section>
+
+    <section id="quem-somos" class="py-20 sm:py-28 bg-constroluz-light">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <h2
+          class="text-4xl font-bold mb-12 text-center text-constroluz-dark uppercase"
+        >
+          QUEM SOMOS
+        </h2>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <p
+              class="text-lg mb-6 leading-relaxed text-constroluz-dark/80 font-normal"
+            >
+              A Constroluz é referência em serviço elétrico na região de
+              Guarulhos com anos de experiência no mercado. Não há serviço que
+              não possa ser feito, seja na sua residência, empresa ou comércio.
+              Instalação, reparos e manutenção à rede elétrica.
+            </p>
+            <p
+              class="text-lg mb-8 leading-relaxed text-constroluz-dark/80 font-normal"
+            >
+              Contamos com uma equipe especializada formada por profissionais de
+              vários setores da área civil, podendo assim oferecer uma grande
+              quantidade de serviço em um único orçamento, deixando sua vida
+              mais fácil.
+            </p>
+            <div
+              class="p-6 border-l-4 border-constroluz-primary bg-constroluz-secondary rounded-r-lg shadow-sm"
+            >
+              <p class="text-xl font-semibold italic text-constroluz-dark">
+                "Nossa missão é manter seu espaço não apenas funcionando, mas
+                também prosperando."
+              </p>
+            </div>
+          </div>
+          <div class="hidden md:block">
+            <img
+              src="assets/images/quem_somos_constroluz.png"
+              alt="Eletricista profissional da Constroluz em serviço"
+              class="rounded-xl shadow-2xl w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="py-20 sm:py-28 bg-constroluz-dark">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <h2
+          class="text-4xl font-bold mb-4 text-center text-constroluz-primary uppercase"
+        >
+          NOSSOS SERVIÇOS
+        </h2>
+        <p class="text-xl text-white text-center mb-16 font-light">
+          Soluções completas de manutenção elétrica e predial que impulsionam o
+          sucesso do seu negócio.
+        </p>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white/5 p-8 rounded-xl shadow-xl transition duration-300 border-t-4 border-constroluz-primary transform hover:scale-[1.02]"
+          >
+            <div class="text-constroluz-primary mb-4">
+              <i data-lucide="bolt" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-constroluz-light">
+              Instalação Elétrica
+            </h3>
+            <p class="text-white mb-4 leading-relaxed font-light">
+              Serviços de instalação e reparos na rede elétrica para ambientes
+              residenciais e comerciais, com foco total na segurança.
+            </p>
+            <ul class="text-sm text-white list-disc ml-4 space-y-1 font-light">
+              <li>Instalação Elétrica Residencial</li>
+              <li>Instalações e Reformas em Geral</li>
+              <li>Sistemas de Iluminação e Rede Elétrica</li>
+            </ul>
+          </div>
+          <div
+            class="bg-white/5 p-8 rounded-xl shadow-xl transition duration-300 border-t-4 border-constroluz-primary transform hover:scale-[1.02]"
+          >
+            <div class="text-constroluz-primary mb-4">
+              <i data-lucide="wrench" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-constroluz-light">
+              Manutenção Estratégica
+            </h3>
+            <p class="text-white mb-4 leading-relaxed font-light">
+              Programas que visam a excelência operacional, mantendo sua
+              infraestrutura em condição de pico e prevenindo falhas.
+            </p>
+            <ul class="text-sm text-white list-disc ml-4 space-y-1 font-light">
+              <li>Diagnóstico Preciso de Falhas</li>
+              <li>Manutenção Preventiva e Corretiva</li>
+              <li>Soluções Inovadoras para Otimização</li>
+            </ul>
+          </div>
+          <div
+            class="bg-white/5 p-8 rounded-xl shadow-xl transition duration-300 border-t-4 border-constroluz-primary transform hover:scale-[1.02]"
+          >
+            <div class="text-constroluz-primary mb-4">
+              <i data-lucide="building-2" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-constroluz-light">
+              Reformas e Predial
+            </h3>
+            <p class="text-white mb-4 leading-relaxed font-light">
+              Manutenção elétrica e predial que aprimora, preveni e otimiza seu
+              ambiente, centralizando a gestão do projeto.
+            </p>
+            <ul class="text-sm text-white list-disc ml-4 space-y-1 font-light">
+              <li>Reformas em Geral</li>
+              <li>Serviços de Construção Civil</li>
+              <li>Manutenção Predial Completa</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="diferenciais" class="py-20 sm:py-28 bg-constroluz-secondary">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <h2
+          class="text-4xl font-bold mb-16 text-center text-constroluz-dark uppercase"
+        >
+          POR QUE ESCOLHER A CONSTROLUZ?
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-constroluz-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
+          >
+            <i
+              data-lucide="award"
+              class="w-8 h-8 text-constroluz-primary mb-3"
+            ></i>
+            <h3 class="text-xl font-semibold mb-2 text-constroluz-dark">
+              Qualidade e Excelência
+            </h3>
+            <p class="text-constroluz-dark/70 font-light">
+              O foco é o atendimento com excelência, com anos de experiência no
+              mercado de Guarulhos.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-constroluz-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
+          >
+            <i
+              data-lucide="shield"
+              class="w-8 h-8 text-constroluz-primary mb-3"
+            ></i>
+            <h3 class="text-xl font-semibold mb-2 text-constroluz-dark">
+              Segurança Certificada
+            </h3>
+            <p class="text-constroluz-dark/70 font-light">
+              Conhecimento de todos os protocolos de segurança exigidos para
+              garantir a conformidade com as exigências da prefeitura.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-constroluz-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
+          >
+            <i
+              data-lucide="dollar-sign"
+              class="w-8 h-8 text-constroluz-primary mb-3"
+            ></i>
+            <h3 class="text-xl font-semibold mb-2 text-constroluz-dark">
+              Melhor Preço e Qualidade
+            </h3>
+            <p class="text-constroluz-dark/70 font-light">
+              O melhor preço sem deixar de lado o empenho e a qualidade, usando
+              os melhores materiais.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-constroluz-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
+          >
+            <i
+              data-lucide="clock"
+              class="w-8 h-8 text-constroluz-primary mb-3"
+            ></i>
+            <h3 class="text-xl font-semibold mb-2 text-constroluz-dark">
+              Atendimento Emergencial
+            </h3>
+            <p class="text-constroluz-dark/70 font-light">
+              Disponíveis para resolver imprevistos e urgências elétricas e
+              prediais.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-constroluz-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
+          >
+            <i
+              data-lucide="users"
+              class="w-8 h-8 text-constroluz-primary mb-3"
+            ></i>
+            <h3 class="text-xl font-semibold mb-2 text-constroluz-dark">
+              Equipe Multissetorial
+            </h3>
+            <p class="text-constroluz-dark/70 font-light">
+              Profissionais de vários setores da área civil para uma solução
+              completa e integrada.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-constroluz-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
+          >
+            <i
+              data-lucide="check-circle"
+              class="w-8 h-8 text-constroluz-primary mb-3"
+            ></i>
+            <h3 class="text-xl font-semibold mb-2 text-constroluz-dark">
+              Orçamento com Transparência
+            </h3>
+            <p class="text-constroluz-dark/70 font-light">
+              Honestidade e transparência são nosso cartão de visitas. Ligue
+              para marcar uma avaliação gratuita.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="py-20 sm:py-28 bg-constroluz-light">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <h2
+          class="text-4xl font-bold mb-12 text-center text-constroluz-dark uppercase"
+        >
+          VAMOS REALIZAR SEU PROJETO?
+        </h2>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div
+            class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-constroluz-primary"
+          >
+            <h3 class="text-2xl font-semibold mb-6 text-constroluz-dark">
+              Envie sua mensagem
+            </h3>
+            <form action="#" method="POST" onsubmit="handleFormSubmit(event)">
+              <div class="mb-4">
+                <input
+                  type="text"
+                  placeholder="Seu Nome/Empresa"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-constroluz-primary focus:border-constroluz-primary transition duration-200"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <input
+                  type="email"
+                  placeholder="Seu Melhor E-mail"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-constroluz-primary focus:border-constroluz-primary transition duration-200"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <input
+                  type="tel"
+                  placeholder="Telefone/WhatsApp (Ex: 11 9xxxx-xxxx)"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-constroluz-primary focus:border-constroluz-primary transition duration-200"
+                  required
+                />
+              </div>
+              <div class="mb-6">
+                <textarea
+                  placeholder="Fale sobre seu projeto ou necessidade"
+                  rows="4"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-constroluz-primary focus:border-constroluz-primary transition duration-200"
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full py-3 bg-constroluz-primary text-constroluz-light font-bold rounded-lg shadow-md hover:opacity-90 transition duration-300 transform hover:scale-[1.01]"
+              >
+                Solicitar Orçamento via WhatsApp
+              </button>
+            </form>
+          </div>
+          <div class="p-8 bg-constroluz-dark rounded-xl shadow-lg">
+            <h3 class="text-2xl font-semibold mb-6 text-constroluz-primary">
+              Nosso Contato
+            </h3>
+            <div class="space-y-6">
+              <div class="flex items-start space-x-4">
+                <i
+                  data-lucide="phone"
+                  class="w-6 h-6 text-constroluz-primary flex-shrink-0"
+                ></i>
+                <div>
+                  <p class="font-semibold text-constroluz-light">
+                    Telefone/WhatsApp
+                  </p>
+                  <a
+                    href="https://wa.me/5511992560312"
+                    target="_blank"
+                    class="text-white/70 hover:text-constroluz-primary transition duration-200"
+                    >(11) 99256-0312</a
+                  >
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <i
+                  data-lucide="mail"
+                  class="w-6 h-6 text-constroluz-primary flex-shrink-0"
+                ></i>
+                <div>
+                  <p class="font-semibold text-constroluz-light">E-mail</p>
+                  <p class="text-white/70">constroluz@hotmail.com</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <i
+                  data-lucide="instagram"
+                  class="w-6 h-6 text-constroluz-primary flex-shrink-0"
+                ></i>
+                <div>
+                  <p class="font-semibold text-constroluz-light">Instagram</p>
+                  <a
+                    href="https://www.instagram.com/constroluz_/"
+                    target="_blank"
+                    class="text-white/70 hover:text-constroluz-primary transition duration-200"
+                    >@constroluz_</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-constroluz-dark py-8">
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-constroluz-light text-sm"
+      >
+        <div class="mb-4">
+          <img
+            src="assets/images/logo.png"
+            alt="Logo Constroluz"
+            class="h-16 mx-auto"
+          />
+        </div>
+        <p class="mb-1">
+          &copy; <span id="current-year"></span> Constroluz. Todos os direitos
+          reservados.
+        </p>
+        <p class="text-xs text-constroluz-light/70">
+          Criado por
+          <span class="font-semibold text-constroluz-primary"
+            >LucasSilva.Dev</span
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // 1. Inicializa os ícones do Lucide
+      document.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+        document.getElementById("current-year").textContent =
+          new Date().getFullYear();
+      });
+
+      // 2. Comportamento do Header Fixo (muda cor ao rolar)
+      window.onscroll = function () {
+        const header = document.getElementById("main-header");
+        if (window.scrollY > 50) {
+          header.classList.add("header-scrolled");
+        } else {
+          header.classList.remove("header-scrolled");
+        }
+      };
+
+      // 3. Funcionalidade do Menu Mobile
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", () => {
+          document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+      document.querySelectorAll("#mobile-menu a").forEach((link) => {
+        if (!link.href.startsWith("http")) {
+          link.addEventListener("click", () => {
+            document.getElementById("mobile-menu").classList.add("hidden");
+          });
+        }
+      });
+
+      // 4. Envio de Formulário via WhatsApp
+      function handleFormSubmit(event) {
+        event.preventDefault();
+        const form = event.target;
+        const nome = form.elements[0].value;
+        const email = form.elements[1].value;
+        const telefone = form.elements[2].value;
+        const mensagem = form.elements[3].value;
+
+        const textoPadrao =
+          "Olá, gostaria de um orçamento da Constroluz. Seguem meus dados:\n\n";
+        const mensagemFormatada = `${textoPadrao}*Nome/Empresa:* ${nome}\n*E-mail:* ${email}\n*Telefone:* ${telefone}\n\n*Projeto:* ${mensagem}`;
+        const mensagemCodificada = encodeURIComponent(mensagemFormatada);
+
+        const numeroWhatsApp = "5511992560312"; // Número atualizado
+        const whatsappUrl = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
+
+        window.open(whatsappUrl, "_blank");
+        form.reset();
+      }
+    </script>
+  </body>
+</html>
