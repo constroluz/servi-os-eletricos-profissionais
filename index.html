@@ -53,6 +53,22 @@
         background-color: rgba(26, 26, 26, 0.8); /* 80% de opacidade do dark */
       }
 
+      /* Estilo da Seção de Frase de Impacto */
+      #impact-phrase-section {
+        background-image: url("assets/images/frase.jpg");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        /* Adiciona um overlay vermelho com opacidade */
+        background-blend-mode: multiply;
+        background-color: rgba(
+          255,
+          0,
+          0,
+          0.6
+        ); /* constroluz-primary com 60% de opacidade */
+      }
+
       /* Estilo para o Header Fixo (Controlado por JS) */
       .header-scrolled {
         background-color: #1a1a1a;
@@ -107,7 +123,7 @@
           <img
             src="assets/images/logo.png"
             alt="Logo Constroluz"
-            class="h-16 w-auto transition-opacity duration-300 hover:opacity-80"
+            class="h-20 w-auto transition-opacity duration-300 hover:opacity-80"
           />
         </a>
 
@@ -332,6 +348,18 @@
       </div>
     </section>
 
+    <section
+      id="impact-phrase-section"
+      class="py-24 sm:py-32 text-center text-white relative flex items-center justify-center"
+    >
+      <div class="absolute inset-0 bg-constroluz-primary opacity-70"></div>
+      <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-3xl sm:text-5xl font-black leading-tight">
+          "Constroluz: Onde a Qualidade e a Segurança Iluminam o Seu Futuro."
+        </p>
+      </div>
+    </section>
+
     <section id="diferenciais" class="py-20 sm:py-28 bg-constroluz-secondary">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <h2
@@ -550,7 +578,7 @@
           <img
             src="assets/images/logo.png"
             alt="Logo Constroluz"
-            class="h-16 mx-auto"
+            class="h-40 mx-auto"
           />
         </div>
         <p class="mb-1">
